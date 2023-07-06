@@ -40,8 +40,7 @@ def shift_letter(letter, shift):
     shifted = int(ord(letter) + shift)
     while shifted > 90:
         shifted -= 26
-    print(chr(shifted))
-shift_letter('A', 21)
+    return(chr(shifted))
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -72,8 +71,7 @@ def caesar_cipher(message, shift):
             while shifted > 90:
                 shifted -= 26
             shifted_message = shifted_message + chr(shifted)
-    print(shifted_message)
-caesar_cipher('ABCD', 23)
+    return(shifted_message)
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -107,8 +105,7 @@ def shift_by_letter(letter, letter_shift):
     add_letter = ord(letter) + ord(letter_shift) - 65
     while add_letter > 90:
         add_letter -= 26
-    print(chr(add_letter))
-shift_by_letter('D', 'B')
+    return(chr(add_letter))
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -174,8 +171,7 @@ def vigenere_cipher(message, key):
                 key_count += 1
                 message_count += 1
         else: continue
-    print(cipher_message)
-vigenere_cipher('HEL LOTHI SISATEST', 'ABC')
+    return(cipher_message)
 
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -242,8 +238,7 @@ def scytale_cipher(message, shift):
         position = (i // shift) + (len(edited_message) // shift) * (i % shift)
         ciphered_message = ciphered_message + message_list[position]
         i += 1
-    print(ciphered_message)
-scytale_cipher('ALGORITHMS_ARE_IMPORTANT', 8)
+    return(ciphered_message)
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
@@ -272,7 +267,11 @@ def scytale_decipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    position = 2
-    i = 0
-    print(i)
-scytale_decipher('INFORMATION_AGE', 3)
+    position = 0
+    plain_text = ''
+    while len(plain_text) < len(message):
+        plain_text = plain_text + message[position]
+        position += shift
+        while position >= len(message):
+            position -= len(message) - 1
+    return(plain_text)
