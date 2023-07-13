@@ -37,10 +37,15 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    shifted = int(ord(letter) + shift)
-    while shifted > 90:
-        shifted -= 26
-    return(chr(shifted))
+    if letter == ' ':
+        shifted = ' '
+    else:
+        shifted = int(ord(letter) + shift)
+        while shifted > 90:
+            shifted -= 26
+        shifted = chr(shifted)
+    return(shifted)
+
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -73,6 +78,7 @@ def caesar_cipher(message, shift):
             shifted_message = shifted_message + chr(shifted)
     return(shifted_message)
 
+
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
     10 points.
@@ -101,11 +107,17 @@ def shift_by_letter(letter, letter_shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    add_letter = ord(letter) + ord(letter_shift) - 65
-    while add_letter > 90:
-        add_letter -= 26
-    return(chr(add_letter))
+    if letter == ' ':
+        add_letter = ' '
+    elif letter_shift == ' ':
+        add_letter = ' '
+    else:
+        add_letter = ord(letter) + ord(letter_shift) - 65
+        while add_letter > 90:
+            add_letter -= 26
+        add_letter = chr(add_letter)
+    return(add_letter)
+
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
